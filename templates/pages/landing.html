@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="top" class="cs-hero">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6">
+        <span class="cs-pill"><i class="bi bi-cpu me-1"></i> Demonstration runs on simulated wearable data</span>
+        <h1 class="cs-h1 mt-3">Understand Your Stress. Take Back Your Balance.</h1>
+        <p class="cs-lead">Explore how wearable-style physiological signals and personalized insights can help
+          you understand patterns associated with everyday stress.</p>
+        <div class="d-flex flex-wrap gap-2">
+          <a href="{% if user.is_authenticated %}{% url 'dashboard' %}{% else %}{% url 'register' %}{% endif %}"
+             class="btn btn-lg cs-btn-primary">Explore Your Dashboard</a>
+          <a href="#how" class="btn btn-lg cs-btn-ghost">Discover How It Works</a>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="cs-preview" role="img" aria-label="Preview of the dashboard using demonstration data">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <strong>Latest overview</strong><span class="cs-tag">Demonstration data</span>
+          </div>
+          <div class="cs-preview-main">
+            <div>
+              <div class="small text-muted">Estimated stress level</div>
+              <div class="fs-4 fw-semibold">Moderate</div>
+              <span class="cs-badge cs-badge-mod"><i class="bi bi-dash-circle"></i> MODERATE STRESS</span>
+            </div>
+            <div class="cs-ring" aria-hidden="true"><span>58%</span></div>
+          </div>
+          <div class="row g-2 mt-1">
+            <div class="col-6"><div class="cs-mini"><span class="small text-muted">Heart rate</span><strong>78 <small>BPM</small></strong></div></div>
+            <div class="col-6"><div class="cs-mini"><span class="small text-muted">HRV</span><strong>42 <small>ms</small></strong></div></div>
+          </div>
+          <svg class="cs-spark" viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true">
+            <polyline fill="none" stroke="#159A9C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+              points="0,50 30,44 60,48 90,32 120,38 150,22 180,30 210,18 240,34 270,26 300,30"/>
+          </svg>
+          <div class="cs-tip"><i class="bi bi-wind me-2"></i>Suggestion: try a 3-minute guided breathing break.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features" class="cs-section">
+  <div class="container">
+    <h2 class="cs-h2">What CalmSense offers</h2>
+    <p class="cs-sub">Six tools that work together, from raw measurements to everyday habits.</p>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4"><div class="cs-card h-100"><i class="bi bi-bullseye cs-ic"></i><h3>Personalized stress estimation</h3><p>A trained classifier estimates Low, Moderate or High stress indicators from your measurements.</p></div></div>
+      <div class="col-md-6 col-lg-4"><div class="cs-card h-100"><i class="bi bi-smartwatch cs-ic"></i><h3>Wearable sensor monitoring</h3><p>Heart rate, HRV, skin temperature and EDA, from a labeled simulation mode or structured input.</p></div></div>
+      <div class="col-md-6 col-lg-4"><div class="cs-card h-100"><i class="bi bi-graph-up cs-ic"></i><h3>Historical trends</h3><p>Filter by day, week or month and see how your signals change over time.</p></div></div>
+      <div class="col-md-6 col-lg-4"><div class="cs-card h-100"><i class="bi bi-moon-stars cs-ic"></i><h3>Sleep and activity insights</h3><p>Compare sleep and movement with your stress estimates across recent days.</p></div></div>
+      <div class="col-md-6 col-lg-4"><div class="cs-card h-100"><i class="bi bi-wind cs-ic"></i><h3>Guided breathing</h3><p>An in-browser breathing circle with a comfortable pace and no forced breath-holding.</p></div></div>
+      <div class="col-md-6 col-lg-4"><div class="cs-card h-100"><i class="bi bi-lightbulb cs-ic"></i><h3>Personalized suggestions</h3><p>A transparent, rule-based engine suggests small, optional wellness activities.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="cs-section cs-section-alt">
+  <div class="container">
+    <h2 class="cs-h2">How it works</h2>
+    <p class="cs-sub">From a raw reading to a cautious, explained estimate.</p>
+    <ol class="cs-steps">
+      <li><strong>Collect or simulate</strong> sensor measurements.</li>
+      <li><strong>Validate and preprocess</strong> values and timestamps.</li>
+      <li><strong>Compare</strong> with your personal baseline.</li>
+      <li><strong>Generate</strong> a stress-level estimate.</li>
+      <li><strong>Explain</strong> the contributing features.</li>
+      <li><strong>Suggest</strong> appropriate wellness activities.</li>
+      <li><strong>Track</strong> trends over time.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4"><div class="cs-card h-100"><h3>Benefits of self-awareness</h3><p>Noticing patterns in sleep, movement and recovery can help you reflect on routines. It is awareness, not a verdict.</p></div></div>
+      <div class="col-lg-4"><div class="cs-card h-100"><h3>Privacy-first approach</h3><p>Data stays in a local database on the machine running the app. Records are private to each account and can be deleted.</p></div></div>
+      <div class="col-lg-4"><div class="cs-card h-100"><h3>Responsible use</h3><p>Exercise, caffeine, illness, medication and individual differences all affect wearable readings. Estimates can be wrong.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="cs-section cs-section-alt">
+  <div class="container">
+    <h2 class="cs-h2">About the project</h2>
+    <div class="cs-card">
+      <dl class="row mb-0">
+        <dt class="col-sm-3">Project code</dt><dd class="col-sm-9">{{ PROJECT.code }}</dd>
+        <dt class="col-sm-3">Title</dt><dd class="col-sm-9">{{ PROJECT.title }}</dd>
+        <dt class="col-sm-3">Project guide</dt><dd class="col-sm-9">{{ PROJECT.guide }}</dd>
+        <dt class="col-sm-3">Student</dt><dd class="col-sm-9">{{ PROJECT.student }}</dd>
+        <dt class="col-sm-3">Department</dt><dd class="col-sm-9">{{ PROJECT.department }}</dd>
+        <dt class="col-sm-3">Institution</dt><dd class="col-sm-9">{{ PROJECT.institution }}</dd>
+        <dt class="col-sm-3">Academic year</dt><dd class="col-sm-9">{{ PROJECT.year }}</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="cs-section">
+  <div class="container" style="max-width:820px">
+    <h2 class="cs-h2">Frequently asked questions</h2>
+    <div class="accordion cs-accordion mt-4" id="faqList">
+      {% include "partials/faq_item.html" with n=1 q="What does the system do?" a="It estimates stress-related patterns from wearable-style measurements using a trained classifier and gives optional wellness suggestions." %}
+      {% include "partials/faq_item.html" with n=2 q="Is the data from a real smartwatch?" a="No. This demonstration uses clearly labeled simulated readings. No physical device connection is claimed." %}
+      {% include "partials/faq_item.html" with n=3 q="Can the results be wrong?" a="Yes. Readings vary between people and are affected by exercise, sleep, caffeine, illness and medication. Treat results as one input to your own reflection." %}
+      {% include "partials/faq_item.html" with n=4 q="Does this replace a healthcare professional?" a="No. It does not diagnose or treat any condition. If you are struggling, please reach out to a trusted person or a qualified professional." %}
+    </div>
+  </div>
+</section>
+{% endblock %}

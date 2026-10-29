@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block body_class %}cs-app{% endblock %}
+{% block nav %}
+<header class="cs-topbar">
+  <button class="btn cs-icon-btn" id="sidebarToggle" aria-label="Toggle sidebar" aria-controls="sidebar">
+    <i class="bi bi-list fs-4"></i>
+  </button>
+  <a class="cs-brand ms-2" href="{% url 'landing' %}"><span class="cs-logo"><i class="bi bi-activity"></i></span> CalmSense</a>
+  <div class="ms-auto d-flex align-items-center gap-2">
+    <span class="small text-muted d-none d-md-inline">{{ user.profile.name }}</span>
+    <form method="post" action="{% url 'logout' %}" class="m-0">
+      {% csrf_token %}<button class="btn cs-btn-ghost btn-sm" type="submit">Log out</button>
+    </form>
+  </div>
+</header>
+<aside id="sidebar" class="cs-sidebar" aria-label="App navigation">
+  <nav class="nav flex-column">
+    <a class="nav-link {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}" href="{% url 'dashboard' %}"><i class="bi bi-speedometer2"></i><span>Dashboard</span></a>
+    <a class="nav-link {% if request.resolver_match.url_name == 'monitor' %}active{% endif %}" href="{% url 'monitor' %}"><i class="bi bi-activity"></i><span>Live Monitor</span></a>
+    <a class="nav-link {% if request.resolver_match.url_name == 'profile' %}active{% endif %}" href="{% url 'profile' %}"><i class="bi bi-person-gear"></i><span>Profile</span></a>
+    {% if user.is_staff %}<a class="nav-link" href="/admin/"><i class="bi bi-shield-lock"></i><span>Admin</span></a>{% endif %}
+  </nav>
+</aside>
+{% endblock %}
+{% block footer %}{% endblock %}
+{% block content %}<div class="cs-app-main"><div class="container-fluid py-4">{% block app_content %}{% endblock %}</div></div>{% endblock %}

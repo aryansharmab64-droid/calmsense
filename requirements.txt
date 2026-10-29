@@ -1,0 +1,7 @@
+Django==4.2.16
+numpy==1.26.4
+pandas==2.2.2
+scikit-learn==1.5.2
+joblib==1.4.2
+reportlab==4.2.2
+python-dotenv==1.0.1
